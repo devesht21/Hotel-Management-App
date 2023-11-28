@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Booking</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .h-font {
+        font-family: "Merienda", cursive;
+      }
+
+      .cim {
+        height: 500px;
+        background: url({{url_for("static", filename= "i1.jpg")}});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .availability-form {
+        margin-top: -50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="position-absolute" style="top: 20%; left: 25%">
+      <div
+        class="alert alert-success"
+        role="alert"
+        style="width: 820px; height: 430px"
+      >
+        <b>Congratulations!</b> Your booking is successful. Your details are as
+        follows: <br /><br />
+        <b>Name: </b>{{fname}}<br />
+        <b>Check-in Date: </b>{{cin}}<br />
+        <b>Check-out Date: </b>{{cou}}<br />
+        <b>Number of Days: </b>{{days}}<br />
+        <b>Room Type: </b>{{rtype}}<br />
+        <b>Room Number: </b>{{rnum}}<br />
+        <br />
+        <b style="font-size: 14px">Check-in: 3:00 pm</b><br />
+        <b style="font-size: 14px">Check-out: 11:00 am</b><br />
+        <b style="font-size: 14px"
+          >Don't forget to bring your ID along with you!</b
+        ><br />
+        <b style="font-size: 14px"
+          >We wish you a pleasant and wonderful stay with us!</b
+        ><br /><br /><br />
+        <div class="d-flex justify-content-center align-items-center">
+          <a href="/booked" class="btn btn-primary">Go Back</a>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

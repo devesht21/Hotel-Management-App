@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Booking</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .h-font {
+        font-family: "Merienda", cursive;
+      }
+
+      .cim {
+        height: 500px;
+        background: url({{url_for("static", filename= "i1.jpg")}});
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .availability-form {
+        margin-top: -50px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nav Bar -->
+
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.html"
+          >Golden Crest Inn</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Facilities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <div class="dropdown">
+              <button
+                class="btn btn-success dropdown-toggle shadow-none"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{msg}}
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Account</a></li>
+                <li>
+                  <a class="dropdown-item" href="{{url_for('logout')}}"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- <button
+              type="button"
+              class="btn btn-primary shadow-none me-lg-3 me-2"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary shadow-none"
+              data-bs-toggle="modal"
+              data-bs-target="#registerModal"
+            >
+              Register
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <span>{{message}}</span>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
+
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">ROOMS</h2>
+
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img src="../static/Standard.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h4 class="card-title">
+                Standard <span class="fw-normal fs-5">($80 per night)</span>
+              </h4>
+              <p class="card-text">
+                Comfortable Bed, Television, Internet Access, Basic Furniture
+              </p>
+              <p class="fw-bold fs-4">{{price1}}</p>
+              <a href="/confirm1" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="../static/isaac-quesada-xc4oxgAbDmw-unsplash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h4 class="card-title">
+                Deluxe <span class="fw-normal fs-5">($170 per night)</span>
+              </h4>
+              <p class="card-text">
+                Upgraded Beds, Larger Area, Mini Bar, Enhanced Bathroom
+                Amenities
+              </p>
+              <p class="fw-bold fs-4">{{price2}}</p>
+              <a href="/confirm2" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img
+              src="../static/roberto-nickson-emqnSQwQQDo-unsplash.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h4 class="card-title">
+                Suite <span class="fw-normal fs-5">($265 per night)</span>
+              </h4>
+              <p class="card-text">
+                Lounge Area, Upgraded Entertainment Options, Enhanced Room
+                Services, Seperate Pool
+              </p>
+              <p class="fw-bold fs-4">{{price3}}</p>
+              <a href="/confirm3" class="btn btn-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
